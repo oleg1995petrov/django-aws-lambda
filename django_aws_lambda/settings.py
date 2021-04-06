@@ -121,4 +121,4 @@ STATICFILES_FINDERS = [
 ]
 MEDIA_ROOT = str(ROOT_DIR / 'media')
 MEDIA_URL = '/media/'
-ADMIN_URL = env('DJANGO_ADMIN_URL')
+ADMIN_URL = env('DJANGO_ADMIN_URL', default='admin/')
