@@ -4,8 +4,16 @@ node_modules
 package-lock.json
 SENTRY_RELEASE
 SENTRY_AUTH_TOKEN
+.env
 ### Python template
 package-lock.json
+.serverless/
+pg_data/
+*.sqlite3
+# IDE
+.idea/*
+*iml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -23,6 +31,7 @@ client/dist/
 downloads/
 eggs/
 .eggs/
+lib/
 lib64/
 parts/
 sdist/
@@ -334,6 +343,6 @@ tags
 
 ### Project template
 
-data_mapping_machine/media/
+django_aws/media/
 
 .pytest_cache/
