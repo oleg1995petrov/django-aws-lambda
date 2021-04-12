@@ -525,7 +525,7 @@ package:
 
 * run Amazon Linux 2 docker image:
 ```bash
-docker run -it -v $(pwd):/root/src/ -v /Users/<your_user>/.aws:/root/.aws amazonlinux:latest bash
+docker run -it -v $(pwd):/root/src/ -v /Users/vadymkhodak/.aws:/root/.aws amazonlinux:latest bash
 ```
 
 * install the necessary Unix dependencies:
@@ -594,6 +594,12 @@ python manage.py createsuperuser
 python manage.py collectstatic
 ```
 
+> If you get `NoCredentialsError` from `botocore` you should add to environment variables `AWS_PROFILE`:
+
+```bash
+export AWS_PROFILE=<your-aws-profile-name>
+```
+
 * install serverless packages from package.json
 ```bash
 npm install
@@ -602,4 +608,52 @@ npm install
 * deploy your Django project to AWS Lambda using Serverless
 ```bash
 serverless deploy -s production
+```
+
+Your response will look like that:
+```
+Serverless: Adding Python requirements helper to ....
+Serverless: Generated requirements from /root/src/requirements.txt in /root/src/.serverless/requirements.txt...
+Serverless: Installing requirements from /root/.cache/serverless-python-requirements/ ...
+Serverless: Using download cache directory /root/.cache/serverless-python-requirements/downloadCacheslspyc
+Serverless: Running ...
+Serverless: Zipping required Python packages for ....
+Serverless: Using Python specified in "runtime": python3.8
+Serverless: Packaging Python WSGI handler...
+Serverless: Packaging service...
+Serverless: Excluding development dependencies...
+Serverless: Removing Python requirements helper from ....
+Serverless: Injecting required Python packages to package...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service app.zip file to S3 (60.48 MB)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+..........
+Serverless: Stack update finished...
+Service Information
+service: <your-serverless-service-name>
+stage: production
+region: <your-aws-region>
+stack: <your-serverless-service-name>-pronduction
+resources: 8
+api keys:
+  None
+endpoints:
+  ANY - https://<some-id>.execute-api.<your-aws-region>.amazonaws.com/production
+  ANY - https://<some-id>.execute-api.<your-aws-region>.amazonaws.com/production/{proxy+}
+functions:
+  app: <your-serverless-service-name>-production-app
+layers:
+  None
+Serverless: Prune: Running post-deployment pruning
+Serverless: Prune: Querying for deployed function versions
+Serverless: Prune: <your-serverless-service-name>-production-app has 3 additional versions published and 0 aliases, 0 versions selected for deletion
+Serverless: Prune: Pruning complete.
+Serverless: Removing old service artifacts from S3...
+
+**************************************************************************************************************************************
+Serverless: Announcing Metrics, CI/CD, Secrets and more built into Serverless Framework. Run "serverless login" to activate for free..
+**************************************************************************************************************************************
 ```
