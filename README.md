@@ -601,5 +601,3 @@ npm install
 ```bash
 serverless deploy -s production
 ```
-
-
