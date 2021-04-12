@@ -424,9 +424,11 @@ python manage.py collectstatic
 python manage.py runserver
 ```
 * go to [http://127.0.0.1:8000/](http://127.0.0.1:8000/) and you will see this:
+* 
   ![image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/w167cb786hfj1rm956in.png)
 
 * go to [http://127.0.0.1:8000/Dev.to](http://127.0.0.1:8000/Dev.to) and you will see this:
+* 
   ![image](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/85gr40o4ipjb7yh7qj83.png)
 
 
